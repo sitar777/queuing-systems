@@ -17,7 +17,7 @@
     or
 
     ```Bash
-    make start
+    make reqs
     ```
 
 1. To run the code use:
