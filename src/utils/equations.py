@@ -1,15 +1,15 @@
 from typing import List
 
-LAMBDA = 2
-MU = 1
-NU = 2
+from src.config import (
+    LAMBDA,
+    MU,
+    NU,
+    CHANNELS,
+    MAX_QUEUE_SIZE,
+)
 
-CHANNELS = 5
-STEPS = 1000
-MAX_QUEUE_SIZE = 3
 
-
-def probability_deriavative(
+def probability_derivative(
     proba_matrix: List[List[float]],
     idx: int,
     time: int,
@@ -34,14 +34,14 @@ def probability_deriavative(
     if idx < CHANNELS:
         return (
             LAMBDA*(proba_matrix[idx-1][time]+rk_coeffs[0])
-            - (LAMBDA + CHANNELS*MU)*(proba_matrix[idx]+rk_coeffs[1])
+            - (LAMBDA + CHANNELS*MU)*(proba_matrix[idx][time]+rk_coeffs[1])
             + CHANNELS*MU*(proba_matrix[idx+1][time]+rk_coeffs[2])
         )
     if idx < CHANNELS + MAX_QUEUE_SIZE:
 
         return (
             LAMBDA*(proba_matrix[idx-1][time]+rk_coeffs[0])
-            - (LAMBDA + CHANNELS*MU + (idx-CHANNELS)*NU)*(proba_matrix[idx]+rk_coeffs[1])
+            - (LAMBDA + CHANNELS*MU + (idx-CHANNELS)*NU)*(proba_matrix[idx][time]+rk_coeffs[1])
             + (CHANNELS*MU + (idx-CHANNELS+1)*NU)*(proba_matrix[idx][time]+rk_coeffs[2])
         )
     if idx == CHANNELS + MAX_QUEUE_SIZE:
