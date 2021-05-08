@@ -24,3 +24,5 @@ def ode45():
                 proba_matrix[idx][time] +
                 (coeffs[0][idx] + 2*coeffs[1][idx] + 2*coeffs[2][idx] + coeffs[3][idx])/6
             )
+
+    return proba_matrix
