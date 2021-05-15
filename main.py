@@ -5,5 +5,6 @@ from src.utils.plot import (
 )
 
 if __name__ == '__main__':
-    build_plot(ode45(), title=' 4-5 order Runge-Kutta')
+    calculated_data = ode45()
+    build_plot(calculated_data, title='4-5 order Runge-Kutta')
     show_plot()
