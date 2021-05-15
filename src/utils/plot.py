@@ -20,7 +20,7 @@ def build_plot(proba_matrix, x_label="t", y_label="p", title="Sample Plot"):
     return fig
 
 
-def show_plot():
+def render_plot():
     plot.grid(True)
     plot.legend()
     plot.show()
