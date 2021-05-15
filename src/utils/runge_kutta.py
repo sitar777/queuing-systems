@@ -8,7 +8,7 @@ from src.utils.helpers import build_rk_coeffs
 
 
 def ode45():
-    values_range = CHANNELS+MAX_QUEUE_SIZE+1
+    values_range = CHANNELS+MAX_QUEUE_SIZE
     coeffs = []
     proba_matrix = [[0]*STEPS for i in range(values_range)]
     proba_matrix[0][0] = 1
@@ -25,4 +25,5 @@ def ode45():
                 (coeffs[0][idx] + 2*coeffs[1][idx] + 2*coeffs[2][idx] + coeffs[3][idx])/6
             )
 
+        coeffs.clear()
     return proba_matrix
