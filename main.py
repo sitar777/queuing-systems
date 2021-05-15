@@ -4,9 +4,11 @@ from src.utils.plot import (
     render_plot,
 )
 from src.utils.metadata import print_metadata
+from src.utils.equations import probability_derivative
+
 
 if __name__ == '__main__':
-    calculated_data = ode45()
+    calculated_data = ode45(probability_derivative)
     print_metadata()
     build_plot(calculated_data, title='4-5 order Runge-Kutta')
     render_plot()

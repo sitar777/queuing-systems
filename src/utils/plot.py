@@ -1,4 +1,4 @@
-from typing import List, NoReturn
+from typing import List
 
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plot
@@ -28,7 +28,7 @@ def build_plot(
     return fig
 
 
-def render_plot() -> NoReturn:
+def render_plot():
     plot.grid(True)
     plot.legend()
     plot.show()

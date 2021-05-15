@@ -1,6 +1,5 @@
-from typing import List
+from typing import List, Callable
 
-from src.utils.equations import probability_derivative
 from src.config import STEP_HEIGHT
 
 
@@ -31,6 +30,7 @@ def validate_coeffs(
 
 
 def build_rk_coeffs(
+    func: Callable,
     proba_matrix: List[List[float]],
     time: int,
     values_range: int,
@@ -40,7 +40,7 @@ def build_rk_coeffs(
     result = []
     for idx in range(values_range):
         result.append(
-            STEP_HEIGHT*probability_derivative(
+            STEP_HEIGHT*func(
                 proba_matrix,
                 idx,
                 time,
