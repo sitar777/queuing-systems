@@ -36,7 +36,7 @@
 
 ![plot](./example_files/example.png)
 
-```Bash
+```txt
 Reduced demand flow rate:  0.4
 Average time of demand in the queue:  2.0
 Average number of demands in the queue:  0
