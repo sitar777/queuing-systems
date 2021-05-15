@@ -1,3 +1,5 @@
+from typing import NoReturn
+
 from src.config import (
     CHANNELS,
     MU,
@@ -9,7 +11,7 @@ from src.config import (
 from src.utils.solution import solution
 
 
-def print_metadata():
+def print_metadata() -> NoReturn:
     rho = LAMBDA/(CHANNELS*MU)
     print('Reduced demand flow rate: ', rho)
 

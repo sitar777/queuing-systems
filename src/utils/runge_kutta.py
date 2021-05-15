@@ -1,3 +1,5 @@
+from typing import List
+
 from src.config import (
     STEPS,
     CHANNELS,
@@ -7,7 +9,7 @@ from src.config import (
 from src.utils.helpers import build_rk_coeffs
 
 
-def ode45():
+def ode45() -> List[List[float]]:
     values_range = CHANNELS+MAX_QUEUE_SIZE
     coeffs = []
     proba_matrix = [[0]*STEPS for i in range(values_range)]

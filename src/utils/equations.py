@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 
 from src.config import (
     LAMBDA,
@@ -10,11 +10,11 @@ from src.config import (
 
 
 def probability_derivative(
-    proba_matrix: List[List[float]],
-    idx: int,
-    time: int,
-    rk_coeffs: List[float] = [0, 0, 0]
-        ):
+        proba_matrix: List[List[float]],
+        idx: int,
+        time: int,
+        rk_coeffs: List[float] = [0, 0, 0]
+            ) -> Union[float, None]:
     """Function retruning value of p_i-th derivative value at time t
 
     Args:

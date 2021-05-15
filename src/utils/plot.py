@@ -1,3 +1,6 @@
+from typing import List, NoReturn
+
+from matplotlib.figure import Figure
 import matplotlib.pyplot as plot
 
 from src.config import (
@@ -6,7 +9,12 @@ from src.config import (
 )
 
 
-def build_plot(proba_matrix, x_label="t", y_label="p", title="Sample Plot"):
+def build_plot(
+    proba_matrix: List[List[float]],
+    x_label: str = 't',
+    y_label: str = 'p',
+    title: str = 'Sample Plot',
+        ) -> Figure:
     fig = plot.figure()
     ax = fig.add_subplot()
     for i in range(CHANNELS):
@@ -20,7 +28,7 @@ def build_plot(proba_matrix, x_label="t", y_label="p", title="Sample Plot"):
     return fig
 
 
-def render_plot():
+def render_plot() -> NoReturn:
     plot.grid(True)
     plot.legend()
     plot.show()

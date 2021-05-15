@@ -45,3 +45,14 @@ Absolute throughput of the queuing system:  2.0
 Relative throughput of the queuing system:  1.0
 Average number of busy channels:  2.0
 ```
+
+## Environmental variables
+
+| Environmental Variable |                                 Description                                | Default value |
+|:----------------------:|:--------------------------------------------------------------------------:|:-------------:|
+|         LAMBDA         |                        Intensity of the demands flow                       |       2       |
+|           MU           |         The intensity of the simplest  service flow of each channel        |       1       |
+|            NU          | The rate of withdrawal of claims  from the queuing system without  service |      0.5      |
+|        CHANNELS        |                   Number of the queuing system  channels                   |       5       |
+|          STEPS         |             Number of steps for Runge-Kutta ODE system solving             |     10000     |
+|     MAX_QUEUE_SIZE     |                           Maximum queue capacity                           |       5       |
