@@ -31,3 +31,17 @@
     ```Bash
     make start
     ```
+
+## Example output
+
+![plot](./example_files/example.png)
+
+```Bash
+Reduced demand flow rate:  0.4
+Average time of demand in the queue:  2.0
+Average number of demands in the queue:  0
+The rate of withdrawal of claims from the queuing system without service:  0.5
+Absolute throughput of the queuing system:  2.0
+Relative throughput of the queuing system:  1.0
+Average number of busy channels:  2.0
+```
