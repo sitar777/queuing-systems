@@ -1,6 +1,6 @@
 LAMBDA = 2
 MU = 1
-NU = 2
+NU = 0.5
 
 CHANNELS = 5
 STEPS = 10000
