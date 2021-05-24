@@ -1,5 +1,9 @@
 from os import getenv
 
+MU_SERVICE = getenv('MU_SERVICE') or 4
+LAMBDA_SERVICE = getenv('LAMBDA_SERVICE') or 6
+NUMBER_OF_WORKERS = getenv('NUMBER_OF_WORKERS') or 2
+
 LAMBDA = getenv('LAMBDA') or 2
 MU = getenv('MU') or 1
 NU = getenv('NU') or 0.5
@@ -8,3 +12,6 @@ CHANNELS = getenv('CHANNELS') or 5
 STEPS = getenv('STEPS') or 10000
 MAX_QUEUE_SIZE = getenv('MAX_QUEUE_SIZE') or 5
 STEP_HEIGHT = 1/STEPS
+
+RHO = LAMBDA/(CHANNELS*MU)
+RHO_SERVICE = LAMBDA_SERVICE/(CHANNELS*MU_SERVICE)

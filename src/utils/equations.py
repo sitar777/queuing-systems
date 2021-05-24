@@ -7,6 +7,7 @@ from src.config import (
     CHANNELS,
     MAX_QUEUE_SIZE,
 )
+from src.utils.service import productivity_loss
 
 
 def probability_derivative(
@@ -26,28 +27,31 @@ def probability_derivative(
     Returns:
         float | None: function value
     """
+
+    final_mu = MU * (1 - productivity_loss())
+
     if idx == 0:
         return (
             - LAMBDA*(proba_matrix[0][time]+rk_coeffs[0])
-            + CHANNELS*MU*(proba_matrix[1][time]+rk_coeffs[1])
+            + CHANNELS*final_mu*(proba_matrix[1][time]+rk_coeffs[1])
         )
     if idx < CHANNELS:
         return (
             LAMBDA*(proba_matrix[idx-1][time]+rk_coeffs[0])
-            - (LAMBDA + CHANNELS*MU)*(proba_matrix[idx][time]+rk_coeffs[1])
-            + CHANNELS*MU*(proba_matrix[idx+1][time]+rk_coeffs[2])
+            - (LAMBDA + CHANNELS*final_mu)*(proba_matrix[idx][time]+rk_coeffs[1])
+            + CHANNELS*final_mu*(proba_matrix[idx+1][time]+rk_coeffs[2])
         )
     if idx < CHANNELS + MAX_QUEUE_SIZE:
 
         return (
             LAMBDA*(proba_matrix[idx-1][time]+rk_coeffs[0])
-            - (LAMBDA + CHANNELS*MU + (idx-CHANNELS)*NU)*(proba_matrix[idx][time]+rk_coeffs[1])
-            + (CHANNELS*MU + (idx-CHANNELS+1)*NU)*(proba_matrix[idx][time]+rk_coeffs[2])
+            - (LAMBDA + CHANNELS*final_mu + (idx-CHANNELS)*NU)*(proba_matrix[idx][time]+rk_coeffs[1])
+            + (CHANNELS*final_mu + (idx-CHANNELS+1)*NU)*(proba_matrix[idx][time]+rk_coeffs[2])
         )
     if idx == CHANNELS + MAX_QUEUE_SIZE:
         return (
             LAMBDA*(proba_matrix[idx-1][time]+rk_coeffs[1])
-            - (CHANNELS*MU + MAX_QUEUE_SIZE*NU)*(proba_matrix[idx][time]+rk_coeffs[2])
+            - (CHANNELS*final_mu + MAX_QUEUE_SIZE*NU)*(proba_matrix[idx][time]+rk_coeffs[2])
         )
     # if something went wrong
     return None

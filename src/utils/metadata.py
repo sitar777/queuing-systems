@@ -3,15 +3,16 @@ from src.config import (
     MU,
     LAMBDA,
     NU,
-    MAX_QUEUE_SIZE
+    MAX_QUEUE_SIZE,
+    RHO
 )
 
 from src.utils.solution import solution
+from src.utils.service import productivity_loss
 
 
 def print_metadata():
-    rho = LAMBDA/(CHANNELS*MU)
-    print('Reduced demand flow rate: ', rho)
+    print('Reduced demand flow rate: ', RHO)
 
     # TODO make sure that t_och is calculated in a right way
     t_och = 1/NU
@@ -32,3 +33,5 @@ def print_metadata():
 
     n_zan = A/MU
     print('Average number of busy channels: ', n_zan)
+
+    print('Productivity loss due to breakage: ', productivity_loss())
