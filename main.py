@@ -9,5 +9,5 @@ from src.utils.equations import probability_derivative
 if __name__ == '__main__':
     calculated_data = ode45(probability_derivative)
     print_metadata()
-    build_plot(calculated_data, title='4-5 order Runge-Kutta')
+    build_plot(calculated_data, title='M/M/n/m queuing system with channels breakage')
     render_plot()
