@@ -1,3 +1,4 @@
+from typing import List
 from math import factorial
 
 from src.config import (
@@ -7,7 +8,7 @@ from src.config import (
 )
 
 
-def count_service_probabilities():
+def count_service_probabilities() -> List[float]:
     P = []
     for idx in range(CHANNELS+1):
         if idx == 0:
@@ -37,7 +38,7 @@ def count_service_probabilities():
     return P
 
 
-def productivity_loss():
+def productivity_loss() -> float:
     service_probabilities = count_service_probabilities()
 
     average_occupied_workers = 0
